@@ -24,11 +24,11 @@
         The sensor will collect 6-axis data(3-axis gyroscope and 3-axis accelerometer) while the FSR sensing area is continuously pressed.<br>
         The collected data shall be then used to recognize the swing trajectory of the wand for gesture recognition.
         The tentative way we've designed for gestures are:<br>
-        gesture 1: Wave tilde---LCD image 1;<br>
-        gesture 2: Zigzag---LCD image 2;<br>
+        gesture 1: Wave tilde---wave pattern;<br>
+        gesture 2: Zigzag---twinkle;<br>
         gesture 3: Clockwise circle---Turn on the motor;<br>
-        gesture 4: Swipe up---Speed up the motor and LCD shows related image 3;<br>
-        gesture 5: Swipe down---Slow down the motor and LCD shows related image 4;<br>
+        gesture 4: Swipe up---Speed up the motor and LCD shows volume up animation;<br>
+        gesture 5: Swipe down---Slow down the motor and LCD shows volume down animation;<br>
         gesture 6: Anticlockwise circle---Turn off the motor;
 
         * HR05 - external-connected LED strip shall be used for command emission indication.<br>
@@ -90,7 +90,6 @@
 
     <br>
 
-
     * SR05 - actuartor execution.
         - the corresponding actuator(determined by the pre-defined gestures) will response to the magic wand instruction, execute the command and send feedback to the cloud to actiavte the vibration motor on the wand;<br>
             * state LED: keep off while no command, turned on when received the command and turned off when the tasks are successfully executed.
@@ -104,25 +103,31 @@
                     * motor accelerates: volume up animation;
                     * motor decelerates: volume down animation.
                 * mode 2: intaction with wand:<br>
-                the LCD would solely interact with the wand. For instance, the LCD will animate a twinkle with respect to wand 'Zigzag' tranjectory gesture.
+                the LCD would solely interact with the wand. For instance, the LCD will animate a twinkle with respect to wand 'Zigzag' tranjectory gesture; the LCD will angimate a wave pattern with respect to wand Tilde' tranjectory gesture.
+
+    <br>
         
-
-    
-
-
-    * SR05 - vibration motor based actuator exection feedback.<br>
-        - a vibration motor will be activated for about few seconds once the control demand has been successfully received and executed by the actuator.
-
+    * SR06 - vibration motor based actuator exection feedback.<br>
+        - a vibration motor will be activated for about few seconds once the control demand has been successfully received and executed by the actuator. We proposed varying vibration effects/modes of the motor with respect to diffrent task accomplishment. The tentative way we're going to execute it is:
+            * LCD tasks---Vibration Motor soft fuzz 60%;
+            * Motor speed up task---Vibration Motor short double click2-80%;
+            * Motor slow down task---Vibration Motor medium click2-80%;
 
 
 <br>
+<br>
 
 
-<b><i>2. Block diagram is shown below.</i></b>
+<b><i>2. Block diagrams are shown below.</i></b>
+
 ![Block_diagram1](A07G_images/Block_diagram1.jpg)
 ![Block_diagram2](A07G_images/Block_diagram2.jpg)
 
-<b><i>3. Flowchart illusatrations are shown below.</i></b>
+<br>
+<br>
+
+<b><i>3. Flowchart illusatration is shown below.</i></b>
+
 ![Flow_Chart](A07G_images/Flow_Chart.jpg)
 
 ## 2. Understanding the Starter Code
