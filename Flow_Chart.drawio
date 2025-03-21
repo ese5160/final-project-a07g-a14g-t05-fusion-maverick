@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0" version="26.1.1">
   <diagram name="第 1 页" id="04hMknLMc1JlGAUFIqUX">
-    <mxGraphModel dx="1201" dy="666" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1413" dy="784" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -79,7 +79,7 @@
         <mxCell id="6ajZmVq5-ZLFAeQpOAEj-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="GYgUfo7SqgVN0UKton_i-20" target="6ajZmVq5-ZLFAeQpOAEj-1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-3" value="wifi" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6ajZmVq5-ZLFAeQpOAEj-2">
+        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-3" value="Wifi: board wand&amp;nbsp;to board acturator&amp;nbsp;&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="6ajZmVq5-ZLFAeQpOAEj-2">
           <mxGeometry x="-0.0667" y="-3" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -96,9 +96,9 @@
         <mxCell id="GYgUfo7SqgVN0UKton_i-66" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GYgUfo7SqgVN0UKton_i-30" target="GYgUfo7SqgVN0UKton_i-62" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GYgUfo7SqgVN0UKton_i-79" value="Wifi&lt;div&gt;higher speed vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-66" vertex="1" connectable="0">
+        <mxCell id="GYgUfo7SqgVN0UKton_i-79" value="Wifi: board acturator to board wand&amp;nbsp;&lt;div&gt;higher speed vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-66" vertex="1" connectable="0">
           <mxGeometry x="-0.0476" y="1" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="-2" y="-4" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GYgUfo7SqgVN0UKton_i-30" value="Motor speed higher&lt;div&gt;LCD volumn up image&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
@@ -107,9 +107,9 @@
         <mxCell id="GYgUfo7SqgVN0UKton_i-67" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GYgUfo7SqgVN0UKton_i-45" target="GYgUfo7SqgVN0UKton_i-65" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GYgUfo7SqgVN0UKton_i-80" value="Wifi&lt;div&gt;lower speed vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-67" vertex="1" connectable="0">
+        <mxCell id="GYgUfo7SqgVN0UKton_i-80" value="Wifi: board acturator to board wand&amp;nbsp;&lt;br&gt;&lt;div&gt;lower speed vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-67" vertex="1" connectable="0">
           <mxGeometry x="-0.0794" y="-5" relative="1" as="geometry">
-            <mxPoint as="offset" />
+            <mxPoint x="25" as="offset" />
           </mxGeometry>
         </mxCell>
         <mxCell id="GYgUfo7SqgVN0UKton_i-45" value="Motor speed lower&lt;div&gt;LCD volume down image&lt;/div&gt;" style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
@@ -118,7 +118,7 @@
         <mxCell id="GYgUfo7SqgVN0UKton_i-59" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="GYgUfo7SqgVN0UKton_i-46" target="GYgUfo7SqgVN0UKton_i-52" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="GYgUfo7SqgVN0UKton_i-78" value="Wifi&lt;div&gt;lcd vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-59" vertex="1" connectable="0">
+        <mxCell id="GYgUfo7SqgVN0UKton_i-78" value="Wifi: board acturator to board wand&amp;nbsp;&lt;div&gt;lcd vibration&lt;/div&gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="GYgUfo7SqgVN0UKton_i-59" vertex="1" connectable="0">
           <mxGeometry x="0.3991" y="-5" relative="1" as="geometry">
             <mxPoint x="5" y="29" as="offset" />
           </mxGeometry>
@@ -132,7 +132,7 @@
             <mxPoint x="400" y="540" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-4" value="wifi" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GYgUfo7SqgVN0UKton_i-47">
+        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-4" value="Wifi: board wand&amp;nbsp;to board acturator&amp;nbsp;&amp;nbsp;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="GYgUfo7SqgVN0UKton_i-47">
           <mxGeometry x="-0.3778" y="2" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
@@ -246,8 +246,8 @@
         <mxCell id="GYgUfo7SqgVN0UKton_i-85" value="Motor off" style="whiteSpace=wrap;html=1;strokeWidth=2;" parent="1" vertex="1">
           <mxGeometry x="670" y="590" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-1" value="State LED stay on" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
-          <mxGeometry x="520" y="450" width="120" height="60" as="geometry" />
+        <mxCell id="6ajZmVq5-ZLFAeQpOAEj-1" value="State LED stay ON" style="rounded=0;whiteSpace=wrap;html=1;strokeWidth=2;" vertex="1" parent="1">
+          <mxGeometry x="670" y="450" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
