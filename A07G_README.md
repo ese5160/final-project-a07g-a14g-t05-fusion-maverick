@@ -75,11 +75,11 @@
 
 
 <b><i>2. Block diagram is shown below.</i></b>
-
-
+![Block_diagram1](A07G_images/Block_diagram1.jpg)
+![Block_diagram2](A07G_images/Block_diagram2.jpg)
 
 <b><i>3. Flowchart illusatrations are shown below.</i></b>
-
+![Flow_Chart](A07G_images/Flow_Chart.jpg)
 
 ## 2. Understanding the Starter Code
 
