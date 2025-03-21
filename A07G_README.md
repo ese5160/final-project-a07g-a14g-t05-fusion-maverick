@@ -63,23 +63,55 @@
 
 * <b><i>SRS:</i></b>
     * SR01 - slide switch on/off.<br>
+        - configured as an external interrupt;
         - programmed state machine controlling the entire state(ON/OFF) of the system.
-    * SR02 - strain/stress based user detection.<br>
-        - a strain/stress sensor will be used to detect the use condition of the wand:
-            - if no strain/stress detected, the wand is a common stick used for fun;
-            - if strain/stress detected, the wand is utilized as our proposed "magic wand".
+    
+    <br>
+
+    * SR02 - FSR based command detection.<br>
+        - configured as an external interrupt;
+        - a FSR will be used to monitor the use condition of the wand:
+            - if no strain/stress detected(<b><i>logic 'high'</i></b>), the wand is a common stick used for fun;
+            - if concontinuous strain/stress detected(<b><i>logic 'low'</i></b>), the wand is utilized as our proposed "magic wand".
+
+    <br>
+
     * SR03 - IMU-based gesture recognition.<br>
-        - a 6-axis/9-axis IMU will be used for collecting data when the user touches the sensing area of the strain/stress sensor until no strain/stress detected at that area or stopping swinging of the wand;
-        - the collected data will be used for the recognition of gesture of the wand, and then send out the correspoding control demand to the cloud.
+        - configued as a SPI(SERCOM0) + one external interrupt;
+        - the 6-axis IMU MPU6500 will be used for collecting data when the user touches the sensing area of the strain/stress sensor until no strain/stress detected at that area or stopping swinging of the wand;<br>
+        the collected data will be used for the recognition of trajectory gestures of the wand, and then send out the correspoding control demand to the cloud.
+
+    <br>
+
     * SR04 - LED strip based command emission.<br>
-        - a LED strip will be programmed to flash simultaneously when the control demand is sent out after correct gesture recogonition.
+        - configued as a digital output;
+        - a LED strip will be programmed to flash simultaneously when the control demand is sent out after correct gesture recogonition.<br>
+        Neopixel library will be utilized for this implmentation.
+
+    <br>
+
+
+    * SR05 - actuartor execution.
+        - the corresponding actuator(determined by the pre-defined gestures) will response to the magic wand instruction, execute the command and send feedback to the cloud to actiavte the vibration motor on the wand;<br>
+            * state LED: keep off while no command, turned on when received the command and turned off when the tasks are successfully executed.
+            * motor:
+                * activation: clockwise circle drawn by the wand;
+                * brake: anticlockwise circle drawn by the wand;
+                * accelerate: wand swipes up;
+                * decelerate: wand swipes down.
+            * LCD:
+                * mode 1: visulization of motor motion state:
+                    * motor accelerates: volume up animation;
+                    * motor decelerates: volume down animation.
+                * mode 2: intaction with wand:<br>
+                the LCD would solely interact with the wand. For instance, the LCD will animate a twinkle with respect to wand 'Zigzag' tranjectory gesture.
+        
+
+    
+
+
     * SR05 - vibration motor based actuator exection feedback.<br>
         - a vibration motor will be activated for about few seconds once the control demand has been successfully received and executed by the actuator.
-    * SR06 - actuartor execution.
-        - the corresponding actuator(determined by the pre-defined gestures) will response to the magic wand instruction, execute the command and send feedback to the cloud to actiavte the vibration motor on the wand;<br>
-        a state LED will change its color corresponded to the actuator state, for instance,
-            - green: actuator in standby;
-            - red: actuator in execution.
 
 
 
