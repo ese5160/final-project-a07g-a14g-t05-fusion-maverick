@@ -23,12 +23,24 @@
         * HR04 - mounted 6-axis IMU MPU6500 shall be used for for wand gesture recognition. <br>
         The sensor will collect 6-axis data(3-axis gyroscope and 3-axis accelerometer) while the FSR sensing area is continuously pressed.<br>
         The collected data shall be then used to recognize the swing trajectory of the wand for gesture recognition.
+        The tentative way we've designed for gestures are:<br>
+        gesture 1: Wave tilde---LCD image 1;<br>
+        gesture 2: Zigzag---LCD image 2;<br>
+        gesture 3: Clockwise circle---Turn on the motor;<br>
+        gesture 4: Swipe up---Speed up the motor and LCD shows related image 3;<br>
+        gesture 5: Swipe down---Slow down the motor and LCD shows related image 4;<br>
+        gesture 6: Anticlockwise circle---Turn off the motor;
 
         * HR05 - external-connected LED strip shall be used for command emission indication.<br>
         The LED strip will quickly flash simultaneously as the control command sent out via MQTT to the cloud, imitating the laser emission process.
 
         * HR06 - external-connceted vibration motor drived by DRV2605L haptic motor controller shall be used for actuator execution feedback.<br>
-        The vibration motor will funtion as a feedback reponse to different actuators' actions. For instance, the motor would be drived to vibrate in different frequencies accoring to the motor rotation speeds.
+        The vibration motor will funtion as a feedback reponse to different actuators' actions. The tentative way we're going to execute it is:
+        <br>
+        LCD tasks---Vibration Motor soft fuzz 60%;<br>
+        Motor speed up task---Vibration Motor short double click2-80%;<br>
+        Motor slow down task---Vibration Motor medium click2-80%;<br>
+
         
 
     <br>
@@ -37,14 +49,14 @@
         * HR07 - project shall be based on SAMW25 core.
 
         * HR08 - mounted state LED shall be used to reflect the state of the actuator. <br>
-        If there is no control demand, the state LED maintains off; vice versa, the state LED will be turned on until the task execution.
+        If there is no control demand, the state LED maintains off; vice versa, the state LED will be turned on when instruction send until the task execution.
 
         * HR09 - external-connected gearmotor drived by DRV8874 motor driver shall be used as one of the actuator.<br>
-        The motor will be drived to execuate the wand command, such as swipe up to increase the rotation speed, swipe down to decrease the rotation, etc.
+        The motor will be drived to execuate the wand command. Such as clockwise to turn on, swipe up to increase the rotation speed, swipe down to decrease the rotation, and anticlockwise to turn off.
 
         * HR010 - external-connected LCD shall be used as the other actuator.<br>
         The LCD would have two function modes, one is the visulization of motor control, which would reflect the motion state of the motor, such as, as the rotation speed increase, the LCD will display volume up animation.<br>
-        In addition, the LCD would solely interact with the magic wand, such as the LCD will animate a twinkle with respect to wand 'Zigzag' tranjectory gesture.
+        In addition, the LCD would solely interact with the magic wand, such as the LCD will antimate a wave pattern when wand has a 'Tilde' tranjectory gesture, and animate a twinkle with respect to wand 'Zigzag' tranjectory gesture.
 
 
 <br><br>
@@ -107,11 +119,11 @@
 
 
 <b><i>2. Block diagram is shown below.</i></b>
-
-
+![Block_diagram1](A07G_images/Block_diagram1.jpg)
+![Block_diagram2](A07G_images/Block_diagram2.jpg)
 
 <b><i>3. Flowchart illusatrations are shown below.</i></b>
-
+![Flow_Chart](A07G_images/Flow_Chart.jpg)
 
 ## 2. Understanding the Starter Code
 
