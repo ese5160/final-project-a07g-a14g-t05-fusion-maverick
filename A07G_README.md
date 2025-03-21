@@ -134,27 +134,25 @@
 
 <b><i> 1. What does “InitializeSerialConsole()” do? In said function, what is “cbufRx” and “cbufTx”? What type of data structure is it? </i></b>
 
-The function InitializeSerialConsole() initializes the UART for serial communication by setting up circular buffers for receiving (cbufRx) and transmitting (cbufTx) data, configuring the USART module and its callbacks, setting interrupt priority, and initiating a read operation to enable continuous data reception. The circular buffers are created using circular_buf_init(), which allocates memory for storing serial data before it is processed.
+* The function InitializeSerialConsole() initializes the UART for serial communication by setting up circular buffers for receiving (cbufRx) and transmitting (cbufTx) data, configuring the USART module and its callbacks, setting interrupt priority, and initiating a read operation to enable continuous data reception. The circular buffers are created using circular_buf_init(), which allocates memory for storing serial data before it is processed.
 
-cbufRx and cbufTx are circular buffers, a type of FIFO (First-In, First-Out) data structure that allows efficient handling of continuous data streams. This structure enables smooth serial communication by storing incoming and outgoing data in a fixed-size buffer where the read and write pointers wrap around when they reach the buffer’s end. Circular buffers help prevent data loss, making them ideal for asynchronous serial data handling in embedded systems.
+* cbufRx and cbufTx are circular buffers, a type of FIFO (First-In, First-Out) data structure that allows efficient handling of continuous data streams. This structure enables smooth serial communication by storing incoming and outgoing data in a fixed-size buffer where the read and write pointers wrap around when they reach the buffer’s end. Circular buffers help prevent data loss, making them ideal for asynchronous serial data handling in embedded systems.
 
 <b><i> 2. How are “cbufRx” and “cbufTx” initialized? Where is the library that defines them (please list the *C file they come from). </i></b>
 
-The variables cbufRx and cbufTx are initialized in the function InitializeSerialConsole() using the function circular_buf_init(). This function is called with two parameters: a pointer to a character buffer (rxCharacterBuffer for cbufRx and txCharacterBuffer for cbufTx) and the respective buffer sizes (RX_BUFFER_SIZE and TX_BUFFER_SIZE). This setup effectively creates circular buffers for handling received and transmitted data in the serial communication process.
+* The variables cbufRx and cbufTx are initialized in the function InitializeSerialConsole() using the function circular_buf_init(). This function is called with two parameters: a pointer to a character buffer (rxCharacterBuffer for cbufRx and txCharacterBuffer for cbufTx) and the respective buffer sizes (RX_BUFFER_SIZE and TX_BUFFER_SIZE). This setup effectively creates circular buffers for handling received and transmitted data in the serial communication process.
 
-The circular_buf_init() function is defined in circular_buffer.c, with its corresponding declarations in circular_buffer.h. This library implements a circular buffer (ring buffer) structure, enabling efficient handling of serial data by maintaining a FIFO (First-In, First-Out) queue. The SerialConsole.c file, which contains the InitializeSerialConsole() function, utilizes this library to initialize and manage the serial console’s buffers.
+* The circular_buf_init() function is defined in circular_buffer.c, with its corresponding declarations in circular_buffer.h. This library implements a circular buffer (ring buffer) structure, enabling efficient handling of serial data by maintaining a FIFO (First-In, First-Out) queue. The SerialConsole.c file, which contains the InitializeSerialConsole() function, utilizes this library to initialize and manage the serial console’s buffers.
 
 <b><i> 3. Where are the character arrays where the RX and TX characters are being stored at the end? Please mention their name and size.
 Tip: Please note cBufRx and cBufTx are structures. </i></b>
 
-The character arrays where the RX and TX characters are ultimately stored are:
-
-rxCharacterBuffer – This array stores the received characters (RX).
-Size: RX_BUFFER_SIZE (512 bytes).
+* rxCharacterBuffer – This array stores the received characters (RX).<br>
+Size: RX_BUFFER_SIZE (512 bytes).<br>
 Defined in: SerialConsole.c.
 
-txCharacterBuffer – This array stores the transmitted characters (TX).
-Size: TX_BUFFER_SIZE (512 bytes).
+* txCharacterBuffer – This array stores the transmitted characters (TX).<br>
+Size: TX_BUFFER_SIZE (512 bytes).<br>
 Defined in: SerialConsole.c.
 
 <b><i> 4. Where are the interrupts for UART character received and UART character sent defined?</i></b> 
