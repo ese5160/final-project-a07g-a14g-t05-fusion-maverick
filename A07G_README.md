@@ -91,13 +91,13 @@
 
     * SR05 - actuartor execution.
         - the corresponding actuator(determined by the pre-defined gestures) will response to the magic wand instruction, execute the command and send feedback to the cloud to actiavte the vibration motor on the wand;<br>
-            * state LED: keep off while no command, turned on when received the command and turned off when the tasks are successfully executed.
-            * motor:
+            * state LED(configued as a a digital output): keep off while no command, turned on when received the command and turned off when the tasks are successfully executed.
+            * motor(drived by DRV8874 motor driver, configued as several digital I/Os):
                 * activation: clockwise circle drawn by the wand;
                 * brake: anticlockwise circle drawn by the wand;
                 * accelerate: wand swipes up;
                 * decelerate: wand swipes down.
-            * LCD:
+            * LCD(configued as a SPI(SERCOM0) + several digital I/Os):
                 * mode 1: visulization of motor motion state:
                     * motor accelerates: volume up animation;
                     * motor decelerates: volume down animation.
@@ -107,6 +107,7 @@
     <br>
         
     * SR06 - vibration motor based actuator exection feedback.<br>
+        - drived by DRV2605L haptic motor controller, configured as an I2C(SERCOM3) + one digital output
         - a vibration motor will be activated for about few seconds once the control demand has been successfully received and executed by the actuator. We proposed varying vibration effects/modes of the motor with respect to diffrent task accomplishment. The tentative way we're going to execute it is:
             * LCD tasks---Vibration Motor soft fuzz 60%;
             * Motor speed up task---Vibration Motor short double click2-80%;
