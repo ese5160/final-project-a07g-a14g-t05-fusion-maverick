@@ -36,14 +36,13 @@
 
         * HR06 - external-connceted vibration motor drived by DRV2605L haptic motor controller shall be used for actuator execution feedback.<br>
         The vibration motor will funtion as a feedback reponse to different actuators' actions. The tentative way we're going to execute it is:
-        <br>
-        LCD tasks---Vibration Motor soft fuzz 60%;<br>
-        Motor speed up task---Vibration Motor short double click2-80%;<br>
-        Motor slow down task---Vibration Motor medium click2-80%;<br>
+            * LCD tasks---Vibration Motor soft fuzz 60%;
+            * Motor speed up task---Vibration Motor short double click2-80%;
+            * Motor slow down task---Vibration Motor medium click2-80%.
 
-        
 
     <br>
+
 
     * <u><i>Acuator PCBA:</i></u>
         * HR07 - project shall be based on SAMW25 core.
