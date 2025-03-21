@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36 Edg/134.0.0.0" version="26.1.1">
   <diagram name="第 1 页" id="neYFr3VHxDB0ribPpKNd">
-    <mxGraphModel dx="2570" dy="1395" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1713" dy="930" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -34,7 +34,7 @@
         <mxCell id="zcgG9CMCVVHrSvOoqnRu-9" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;IMU&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="zcgG9CMCVVHrSvOoqnRu-8">
           <mxGeometry y="26" width="160" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="zcgG9CMCVVHrSvOoqnRu-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Force Sensor&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="zcgG9CMCVVHrSvOoqnRu-8">
+        <mxCell id="zcgG9CMCVVHrSvOoqnRu-10" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Force Sensor Resistor&lt;/font&gt;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;whiteSpace=wrap;html=1;align=center;" vertex="1" parent="zcgG9CMCVVHrSvOoqnRu-8">
           <mxGeometry y="56" width="160" height="30" as="geometry" />
         </mxCell>
         <mxCell id="zcgG9CMCVVHrSvOoqnRu-11" value="Power" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=16;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
@@ -279,7 +279,7 @@
         <mxCell id="zcgG9CMCVVHrSvOoqnRu-79" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;On/Off Button&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="114" y="1260" width="116" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="zcgG9CMCVVHrSvOoqnRu-80" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Strain/Stress Sensor&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+        <mxCell id="zcgG9CMCVVHrSvOoqnRu-80" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;FSR&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
           <mxGeometry x="124" y="1520" width="130" height="60" as="geometry" />
         </mxCell>
         <mxCell id="zcgG9CMCVVHrSvOoqnRu-81" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="zcgG9CMCVVHrSvOoqnRu-80" target="zcgG9CMCVVHrSvOoqnRu-77">
