@@ -8,6 +8,7 @@
 
 <br>
 
+
 ## 1. Software Architecture
 <b><i>1. Updated HRS & SRS are elaborated below.</i></b>
 * <b><i>HRS:</i></b>
