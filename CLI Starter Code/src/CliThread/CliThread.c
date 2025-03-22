@@ -216,10 +216,9 @@ void vCommandConsoleTask(void *pvParameters)
 
 /**************************************************************************/ /**
  * @fn			void FreeRTOS_read(char* character)
- * @brief		STUDENTS TO COMPLETE. This function block the thread unless we received a character. How can we do this?
-                 There are multiple solutions! Check all the inter-thread communications available! See https://www.freertos.org/a00113.html
- * @details		STUDENTS TO COMPLETE.
- * @note
+ * @brief		Blocks until a character is received from the CLI RX queue.
+ * @details		Waits indefinitely for a character sent by the UART RX callback, and stores it in the provided pointer.
+ * @note		Use a FreeRTOS queue to synchronize with the UART RX callback.
  *****************************************************************************/
 static void FreeRTOS_read(char *character)
 {

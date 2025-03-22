@@ -228,8 +228,9 @@ static void configure_usart_callbacks(void)
 /**
  * @fn			void usart_read_callback(struct usart_module *const usart_module)
  * @brief		Callback called when the system finishes receives all the bytes requested from a UART read job
-		 Students to fill out. Please note that the code here is dummy code. It is only used to show you how some functions work.
- * @note
+ *				UART RX callback triggered when a character is received.
+ * @note		Stores the received character in the circular buffer, sends it to the CLI queue,
+ *				and starts a new UART read job.
  *****************************************************************************/
 void usart_read_callback(struct usart_module *const usart_module)
 {
