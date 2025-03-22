@@ -251,8 +251,13 @@ See code below
 <br>
 
 ## 6. Add CLI commands
+See code below
+[CliThread.c](/CLI%20Starter%20Code/src/CliThread/CliThread.c)
+and
+[CliThread.h](/CLI%20Starter%20Code/src/CliThread/CliThread.h)
 
-
+Video:
+[Video](https://drive.google.com/file/d/1l_hZNzuVjrcvtuFjwrbAobGIvQoAUc4C/view?usp=sharing)
 
 
 <br>
