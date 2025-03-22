@@ -97,7 +97,7 @@ int SerialConsoleReadCharacter(uint8_t *rxChar);
  * @param   	format Pointer to a array of characters to be printed.
  * @param   	...    Optional variables used in the format string. These are handled
  *                     using a variable argument list (va_list). In our project, it shall be sensor reading and states indicating, etc.
- * @note		Use vsprintf() to format the message and send to the UART terminal.
+ * @note			Use vsprintf() to format the message and send to the UART terminal.
  *****************************************************************************/
 void LogMessage(enum eDebugLogLevels level, const char *format, ...);
 

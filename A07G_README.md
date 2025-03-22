@@ -173,7 +173,42 @@ b. A character has been sent? (TX) </i></b>
 <br>
 
 ## 3. Debug Logger Module 
+Seen the updated [Debug Logger Module](https://github.com/ese5160/final-project-a07g-a14g-teachingteams25/blob/21652915bea999107ef5df8ec5e0ed705d491a29/CLI%20Starter%20Code/src/SerialConsole/SerialConsole.c) in GitHub repository or the below code snippet.
 
+```C
+/**
+ * @fn			LogMessage
+ * @brief		Logs a message at the specified debug level.
+ * @param   	level  Determines the log levels of the message to output. If the level is smaller than 
+ * 					   the current “logLevel” it is not printed.
+ * @param   	format Pointer to a array of characters to be printed.
+ * @param   	...    Optional variables used in the format string. These are handled
+ *                     using a variable argument list (va_list). In our project, it shall be sensor reading and states indicating, etc.
+ * @note			Use vsprintf() to format the message and send to the UART terminal.
+ *****************************************************************************/
+void LogMessage(enum eDebugLogLevels level, const char *format, ...);
+
+
+/**
+ * @brief Logs a message at the specified debug level.
+ */
+void LogMessage(enum eDebugLogLevels level, const char *format, ...)
+{
+	// Check if the message should be printed based on current log level
+	if (level < getLogLevel())
+	return;
+
+	// Prepare buffer for formatted message
+	char logBuffer[256];  // Make sure this is big enough for your messages
+	va_list args;
+	va_start(args, format);
+	vsprintf(logBuffer, format, args);  // UNSAFE if logBuffer is too small
+	va_end(args);
+
+	// Send formatted string to UART
+	SerialConsoleWriteString(logBuffer);
+}
+```
 
 
 <br>
