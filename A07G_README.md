@@ -214,9 +214,29 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 <br>
 
 ## 4. Wiretap the convo!
+<b><i> 1. Quick Questions</i></b>
+* <b><i> 1. What nets must you attach the logic analyzer to? (Check how the firmware sets up the UART in SerialConsole.c!)</i></b>
+    
+* PB10 is used as SERCOM4 PAD[2], which is UART TX from the SAMW25 to the EDBG.
+* GND is used as ground reference.
 
+* <b><i> 2. Where on the circuit board can you attach / solder to?</i></b>
 
+* There is a header for PB10 on the dev board. We connect PB10 with chanel 0 signal for the logic analyzer, and GND connected to the chanel 0 gnd for the logic analyzer.
 
+* <b><i> 3. What are critical settings for the logic analyzer?</i></b>
+
+* Critical settings are as follows.
+![Critical settings](/A07G_images/A07G_4.1.3.png)
+
+<b><i> 2. Hardware connections</i></b>
+![Hardware connections](/A07G_images/A07G_4.2.jpg)
+
+<b><i> 3. Decoded message</i></b>
+![Decoded message](/A07G_images/A07G_4.3.png)
+
+<b><i> 4. sal file</i></b>
+[Sal file link](/A07G_images/A07G_4.4.sal)
 
 <br>
 
