@@ -14,13 +14,15 @@
 /******************************************************************************
  * Defines
  ******************************************************************************/
-#define CLI_RX_QUEUE_LENGTH 64  // Charactor queue length
+#define CLI_RX_QUEUE_LENGTH 100  // Character queue length
+#define FIRMWARE_VERSION "0.0.1"
 
 /******************************************************************************
  * Variables
  ******************************************************************************/
 static int8_t *const pcWelcomeMessage =
     "FreeRTOS CLI.\r\nType Help to view a list of registered commands.\r\n";
+
 
 // Clear screen command
 const CLI_Command_Definition_t xClearScreen =
@@ -37,12 +39,28 @@ static const CLI_Command_Definition_t xResetCommand =
         (const pdCOMMAND_LINE_CALLBACK)CLI_ResetDevice,
         0};
 
+static const CLI_Command_Definition_t xVersionCommand =
+	{
+		"version",
+		"version: Displays the firmware version.\r\n",
+		(const pdCOMMAND_LINE_CALLBACK)CLI_Version,
+		0};
+
+static const CLI_Command_Definition_t xTicksCommand =
+	{
+		"ticks",
+		"ticks: Displays the number of system ticks since boot.\r\n",
+		(const pdCOMMAND_LINE_CALLBACK)CLI_Ticks,
+		0};
+
 QueueHandle_t cliRxQueue;
 
 /******************************************************************************
  * Forward Declarations
  ******************************************************************************/
 static void FreeRTOS_read(char *character);
+
+
 /******************************************************************************
  * Callback Functions
  ******************************************************************************/
@@ -60,7 +78,9 @@ void vCommandConsoleTask(void *pvParameters)
 
     FreeRTOS_CLIRegisterCommand(&xClearScreen);
     FreeRTOS_CLIRegisterCommand(&xResetCommand);
-
+	FreeRTOS_CLIRegisterCommand(&xVersionCommand);
+	FreeRTOS_CLIRegisterCommand(&xTicksCommand);
+	
     uint8_t cInputIndex = 0;
 	char cRxedChar[2];
     BaseType_t xMoreDataToFollow;
@@ -230,10 +250,13 @@ static void FreeRTOS_read(char *character)
     //vTaskSuspend(NULL); // We suspend ourselves. Please remove this when doing your code
 }
 
-/******************************************************************************
+/*************************************************************************/ /**
  * CLI Functions - Define here
- ******************************************************************************/
-
+ * @fn			BaseType_t xCliClearTerminalScreen(char *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+ * @brief		Clears the terminal screen using a VT100 escape sequence.
+ * @details		Sends the ANSI escape code "[2J" to clear the screen in terminal programs like Tera Term.
+ * @note		Requires a terminal that supports VT100 sequences; returns pdFALSE.
+ *****************************************************************************/
 // THIS COMMAND USES vt100 TERMINAL COMMANDS TO CLEAR THE SCREEN ON A TERMINAL PROGRAM LIKE TERA TERM
 // SEE http://www.csie.ntu.edu.tw/~r92094/c++/VT100.html for more info
 // CLI SPECIFIC COMMANDS
@@ -246,9 +269,42 @@ BaseType_t xCliClearTerminalScreen(char *pcWriteBuffer, size_t xWriteBufferLen, 
     return pdFALSE;
 }
 
+/**************************************************************************/ /**
+ * @fn			BaseType_t CLI_ResetDevice(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+ * @brief		Triggers a system software reset via the CLI.
+ * @details		Called when the user enters the "reset" command in the terminal.
+ *              Displays a message and performs a system reset using system_reset().
+ * @note		No additional output is expected; returns pdFALSE.
+ *****************************************************************************/
 // Example CLI Command. Resets system.
 BaseType_t CLI_ResetDevice(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
 {
     system_reset();
     return pdFALSE;
+}
+
+/**************************************************************************/ /**
+ * @fn			BaseType_t CLI_Version(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+ * @brief		Prints the firmware version string.
+ * @details		Displays a predefined firmware version to the terminal (e.g., "0.0.1").
+ *              The version can be updated via a #define in the code.
+ * @note		Returns pdFALSE since all output is printed in one call.
+ *****************************************************************************/
+BaseType_t CLI_Version(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+{
+	snprintf(pcWriteBuffer, xWriteBufferLen, "Firmware Version: %s\r\n", FIRMWARE_VERSION);
+	return pdFALSE; // Not expecting more output next time
+}
+
+
+/**************************************************************************/ /**
+ * @fn			BaseType_t CLI_Ticks(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+ * @brief		Prints the number of ticks since the system started.
+ * @details		Gets the current tick count using xTaskGetTickCount() and prints it to the terminal.
+ * @note		Returns pdFALSE since only one line of output is required.
+ *****************************************************************************/
+BaseType_t CLI_Ticks(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString)
+{
+	snprintf(pcWriteBuffer, xWriteBufferLen, "System Ticks: %lu\r\n", xTaskGetTickCount());
+	return pdFALSE;
 }

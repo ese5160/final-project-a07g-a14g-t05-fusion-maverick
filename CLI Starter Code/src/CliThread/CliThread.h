@@ -17,7 +17,7 @@
 #define CLI_PRIORITY (configMAX_PRIORITIES - 1) ///<STUDENT FILL
 #define CLI_TASK_DELAY 150	///STUDENT FILL
 
-#define MAX_INPUT_LENGTH_CLI    100	//STUDENT FILL
+#define MAX_INPUT_LENGTH_CLI    130	//STUDENT FILL
 #define MAX_OUTPUT_LENGTH_CLI   130	//STUDENT FILL
 
 #define CLI_MSG_LEN						16
@@ -47,4 +47,6 @@ BaseType_t CLI_NeotrellisSetLed( int8_t *pcWriteBuffer,size_t xWriteBufferLen,co
 BaseType_t CLI_NeotrellProcessButtonBuffer( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
 BaseType_t CLI_DistanceSensorGetDistance( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
 BaseType_t CLI_ResetDevice( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
+BaseType_t CLI_Version(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
+BaseType_t CLI_Ticks(int8_t *pcWriteBuffer, size_t xWriteBufferLen, const int8_t *pcCommandString);
 BaseType_t CLI_SendDummyGameData( int8_t *pcWriteBuffer,size_t xWriteBufferLen,const int8_t *pcCommandString );
