@@ -95,10 +95,9 @@ int SerialConsoleReadCharacter(uint8_t *rxChar);
  * @param   	level  Determines the log levels of the message to output. If the level is smaller than 
  * 					   the current “logLevel” it is not printed.
  * @param   	format Pointer to a array of characters to be printed.
- * @param   	...    The “...” in C denotes a variable list. Please refer to https://www.cprogramming.com/tutorial/c/lesson17.html 
- * 					   for more information. In this argument, we expect the variables that you would normally use in a vsprintf 
- * 					   (please see example on https://www.tutorialspoint.com/c_standard_library/c_function_vsprintf.htm). 
- * @note
+ * @param   	...    Optional variables used in the format string. These are handled
+ *                     using a variable argument list (va_list). In our project, it shall be sensor reading and states indicating, etc.
+ * @note		Use vsprintf() to format the message and send to the UART terminal.
  *****************************************************************************/
 void LogMessage(enum eDebugLogLevels level, const char *format, ...);
 

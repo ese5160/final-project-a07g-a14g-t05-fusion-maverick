@@ -151,8 +151,19 @@ void setLogLevel(enum eDebugLogLevels debugLevel)
  */
 void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 {
-    // Todo: Implement Debug Logger
-	// More detailed descriptions are in header file
+	// Check if the message should be printed based on current log level
+	if (level < getLogLevel())
+	return;
+
+	// Prepare buffer for formatted message
+	char logBuffer[256];  // Make sure this is big enough for your messages
+	va_list args;
+	va_start(args, format);
+	vsprintf(logBuffer, format, args);  // UNSAFE if logBuffer is too small
+	va_end(args);
+
+	// Send formatted string to UART
+	SerialConsoleWriteString(logBuffer);
 }
 
 /*
