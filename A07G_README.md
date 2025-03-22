@@ -119,15 +119,15 @@
 
 <b><i>2. Block diagrams are shown below.</i></b>
 
-![Block_diagram1](A07G_images/Block_diagram1.jpg)
-![Block_diagram2](A07G_images/Block_diagram2.jpg)
+![Block_diagram1](A07G_deliveries/Block_diagram1.jpg)
+![Block_diagram2](A07G_deliveries/Block_diagram2.jpg)
 
 <br>
 <br>
 
 <b><i>3. Flowchart illusatration is shown below.</i></b>
 
-![Flow_Chart](A07G_images/Flow_Chart.jpg)
+![Flow_Chart](A07G_deliveries/Flow_Chart.jpg)
 
 ## 2. Understanding the Starter Code
 
@@ -229,24 +229,22 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 * <b><i> 3. What are critical settings for the logic analyzer?</i></b>
 
     * Critical settings are as follows, enuring the configuration of the logic analyzer are the same as dev board UART setting.
-    ![Critical settings](/A07G_images/A07G_4.1.3.png)
+    ![Critical settings](A07G_deliveries/A07G_4.1.3.png)
 
 <b><i> 2. Hardware connections</i></b>
-![Hardware connections](/A07G_images/A07G_4.2.jpg)
+![Hardware connections](A07G_deliveries/A07G_4.2.jpg)
 
 <b><i> 3. Decoded message</i></b>
-![Decoded message](/A07G_images/A07G_4.3.png)
+![Decoded message](A07G_deliveries/A07G_4.3.png)
 
 <b><i> 4. sal file</i></b>
-[Sal file link](/A07G_images/A07G_4.4.sal)
+[Sal file link](A07G_deliveries//A07G_4.4.sal)
 
 <br>
 
 ## 5. Complete the CLI
 See code below
-[CliThread.c](/CLI%20Starter%20Code/src/CliThread/CliThread.c)
-
-[SerialConsole.c](/CLI%20Starter%20Code/src/SerialConsole/SerialConsole.c)
+[CliThread.c](/CLI%20Starter%20Code/src/CliThread/CliThread.c) and [SerialConsole.c](/CLI%20Starter%20Code/src/SerialConsole/SerialConsole.c).
 
 
 
