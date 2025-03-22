@@ -176,6 +176,7 @@ b. A character has been sent? (TX) </i></b>
 Seen the updated [Debug Logger Module](https://github.com/ese5160/final-project-a07g-a14g-teachingteams25/blob/21652915bea999107ef5df8ec5e0ed705d491a29/CLI%20Starter%20Code/src/SerialConsole/SerialConsole.c) in GitHub repository or the below code snippet.
 
 ```C
+// Header file
 /**
  * @fn			LogMessage
  * @brief		Logs a message at the specified debug level.
@@ -189,6 +190,7 @@ Seen the updated [Debug Logger Module](https://github.com/ese5160/final-project-
 void LogMessage(enum eDebugLogLevels level, const char *format, ...);
 
 
+// Implementation files
 /**
  * @brief Logs a message at the specified debug level.
  */
