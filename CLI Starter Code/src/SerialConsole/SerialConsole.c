@@ -27,6 +27,7 @@
  * Includes
  ******************************************************************************/
 #include "SerialConsole.h"
+#include "queue.h"
 
 /******************************************************************************
  * Defines
@@ -54,6 +55,7 @@ void usart_read_callback(struct usart_module *const usart_module); // Callback f
  ******************************************************************************/
 static void configure_usart(void);
 static void configure_usart_callbacks(void);
+extern QueueHandle_t cliRxQueue;
 
 /******************************************************************************
  * Global Variables
@@ -232,6 +234,18 @@ static void configure_usart_callbacks(void)
 void usart_read_callback(struct usart_module *const usart_module)
 {
 	// ToDo: Complete this function 
+    // Store the received character in the circular buffer
+    circular_buf_put(cbufRx, (uint8_t)latestRx);
+
+    // Notify the CLI thread: send the character to the CLI queue
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE;
+    xQueueSendFromISR(cliRxQueue, &latestRx, &xHigherPriorityTaskWoken);
+
+    // Restart UART read for the next character
+    usart_read_buffer_job(&usart_instance, (uint8_t *)&latestRx, 1);
+
+    // Trigger a context switch if a higher-priority task was woken
+    portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
 }
 
 /**************************************************************************/ 

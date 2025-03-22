@@ -82,7 +82,6 @@ int main(void)
 
 	// Start FreeRTOS scheduler.
 	vTaskStartScheduler();
-
 	while (1)
 		;
 }

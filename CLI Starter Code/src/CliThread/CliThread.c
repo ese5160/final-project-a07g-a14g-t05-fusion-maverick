@@ -10,10 +10,11 @@
  * Includes
  ******************************************************************************/
 #include "CliThread.h"
-
+#include "queue.h"
 /******************************************************************************
  * Defines
  ******************************************************************************/
+#define CLI_RX_QUEUE_LENGTH 64  // Charactor queue length
 
 /******************************************************************************
  * Variables
@@ -36,6 +37,8 @@ static const CLI_Command_Definition_t xResetCommand =
         (const pdCOMMAND_LINE_CALLBACK)CLI_ResetDevice,
         0};
 
+QueueHandle_t cliRxQueue;
+
 /******************************************************************************
  * Forward Declarations
  ******************************************************************************/
@@ -50,12 +53,16 @@ static void FreeRTOS_read(char *character);
 
 void vCommandConsoleTask(void *pvParameters)
 {
+	// Create the queue to receive UART characters
+	cliRxQueue = xQueueCreate(CLI_RX_QUEUE_LENGTH, sizeof(char));
+	
     // REGISTER COMMANDS HERE
 
     FreeRTOS_CLIRegisterCommand(&xClearScreen);
     FreeRTOS_CLIRegisterCommand(&xResetCommand);
 
-    uint8_t cRxedChar[2], cInputIndex = 0;
+    uint8_t cInputIndex = 0;
+	char cRxedChar[2];
     BaseType_t xMoreDataToFollow;
     /* The input and output buffers are declared static to keep them off the stack. */
     static char pcOutputString[MAX_OUTPUT_LENGTH_CLI], pcInputString[MAX_INPUT_LENGTH_CLI];
@@ -217,7 +224,11 @@ void vCommandConsoleTask(void *pvParameters)
 static void FreeRTOS_read(char *character)
 {
     // ToDo: Complete this function
-    vTaskSuspend(NULL); // We suspend ourselves. Please remove this when doing your code
+	if (xQueueReceive(cliRxQueue, character, portMAX_DELAY) != pdTRUE)
+	{
+		*character = 0; // If fail, return 0
+	}
+    //vTaskSuspend(NULL); // We suspend ourselves. Please remove this when doing your code
 }
 
 /******************************************************************************

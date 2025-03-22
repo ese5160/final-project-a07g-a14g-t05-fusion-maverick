@@ -243,7 +243,10 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 <br>
 
 ## 5. Complete the CLI
+See code below
+[CliThread.c](/CLI%20Starter%20Code/src/CliThread/CliThread.c)
 
+[SerialConsole.c](/CLI%20Starter%20Code/src/SerialConsole/SerialConsole.c)
 
 
 
