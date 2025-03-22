@@ -219,17 +219,17 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 <b><i> 1. Quick Questions</i></b>
 * <b><i> 1. What nets must you attach the logic analyzer to? (Check how the firmware sets up the UART in SerialConsole.c!)</i></b>
     
-* PB10 is used as SERCOM4 PAD[2], which is UART TX from the SAMW25 to the EDBG.
-* GND is used as ground reference.
+    * PB10 is used as SERCOM4 PAD[2], which is UART TX from the SAMW25 to the EDBG.
+    * GND is used as ground reference.
 
 * <b><i> 2. Where on the circuit board can you attach / solder to?</i></b>
 
-* There is a header for PB10 on the dev board. We connect PB10 with chanel 0 signal for the logic analyzer, and GND connected to the chanel 0 gnd for the logic analyzer.
+    * There is a header for PB10 on the dev board. We connect PB10 with chanel 0 signal for the logic analyzer, and GND connected to the chanel 0 gnd for the logic analyzer.
 
 * <b><i> 3. What are critical settings for the logic analyzer?</i></b>
 
-* Critical settings are as follows.
-![Critical settings](/A07G_images/A07G_4.1.3.png)
+    * Critical settings are as follows, enuring the configuration of the logic analyzer are the same as dev board UART setting.
+    ![Critical settings](/A07G_images/A07G_4.1.3.png)
 
 <b><i> 2. Hardware connections</i></b>
 ![Hardware connections](/A07G_images/A07G_4.2.jpg)
@@ -255,5 +255,3 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 
 
 <br>
-
-## 7. Using Percepio
