@@ -57,8 +57,7 @@
         The LCD would have two function modes, one is the visulization of motor control, which would reflect the motion state of the motor, such as, as the rotation speed increase, the LCD will display volume up animation.<br>
         In addition, the LCD would solely interact with the magic wand, such as the LCD will antimate a wave pattern when wand has a 'Tilde' tranjectory gesture, and animate a twinkle with respect to wand 'Zigzag' tranjectory gesture.
 
-
-<br><br>
+<br>
 
 * <b><i>SRS:</i></b>
     * SR01 - slide switch on/off.<br>
