@@ -198,12 +198,32 @@ Tip: Please note cBufRx and cBufTx are structures. </i></b>
 
 <b><i> 7. Draw a diagram that explains the program flow for UART receive – starting with the user typing a character and ending with how that characters ends up in the circular buffer “cbufRx”. Please make reference to specific functions in the starter code. </i></b>
 
+* Seen the UART receive progress mapping diagram below.
+
+    ![UART receive](A07G_deliveries/A07G_2.7.png)
+
+<br>
+
 <b><i> 8. Draw a diagram that explains the program flow for the UART transmission – starting from a string added by the program to the circular buffer “cbufTx” and ending on characters being shown on the screen of a PC (On Teraterm, for example). Please make reference to specific functions in the starter code. </i></b>
+
+* Seen the UART transmission progress mapping diagram below.
+
+    ![UART transmission](A07G_deliveries/A07G_2.8.png)
+
+<br>
 
 <b><i> 9. What is done on the function “startStasks()” in main.c? How many threads are started?</i></b>
 
+* According to the function body of `StartTasks()`, it execute the following actions:
+    1. Prints the available heap memory before starting any tasks;
+    2. Creates the Command-Line Interface (CLI) task using `xTaskCreate(vCommandConsoleTask, "CLI_TASK", CLI_TASK_SIZE, NULL, CLI_PRIORITY, &cliTaskHandle)`;
+        * Prints an error message if the CLI task creation fails;
+    3. Displays the remaining heap memory after starting the CLI task.
+
+* Only 1 thread is started in this function - the CLI task that handles the command-line interface functionality.
 
 
+<br>
 <br>
 
 ## 3. Debug Logger Module 
@@ -248,6 +268,7 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 
 
 <br>
+<br>
 
 ## 4. Wiretap the convo!
 <b><i> 1. Quick Questions</i></b>
@@ -272,8 +293,9 @@ void LogMessage(enum eDebugLogLevels level, const char *format, ...)
 ![Decoded message](A07G_deliveries/A07G_4.3.png)
 
 <b><i> 4. sal file</i></b>
-[Sal file link](A07G_deliveries//A07G_4.4.sal)
+[Sal file link](A07G_deliveries//A07G_4.4.sal).
 
+<br>
 <br>
 
 ## 5. Complete the CLI
@@ -283,6 +305,7 @@ See code below
 
 
 <br>
+<br>
 
 ## 6. Add CLI commands
 See code below
@@ -290,8 +313,5 @@ See code below
 and
 [CliThread.h](/CLI%20Starter%20Code/src/CliThread/CliThread.h)
 
-Video:
+Demonstration video:
 [Video](https://drive.google.com/file/d/1l_hZNzuVjrcvtuFjwrbAobGIvQoAUc4C/view?usp=sharing)
-
-
-<br>
