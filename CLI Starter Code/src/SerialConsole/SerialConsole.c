@@ -236,7 +236,7 @@ void usart_read_callback(struct usart_module *const usart_module)
 {
 	// ToDo: Complete this function 
     // Store the received character in the circular buffer
-    circular_buf_put(cbufRx, (uint8_t)latestRx);
+    circular_buf_put2(cbufRx, (uint8_t)latestRx);
 
     // Notify the CLI thread: send the character to the CLI queue
     BaseType_t xHigherPriorityTaskWoken = pdFALSE;

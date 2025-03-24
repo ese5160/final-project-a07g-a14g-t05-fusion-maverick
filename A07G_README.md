@@ -129,38 +129,72 @@
 
 ![Flow_Chart](A07G_deliveries/Flow_Chart.jpg)
 
+
+<br>
+<br>
+
 ## 2. Understanding the Starter Code
 
 <b><i> 1. What does “InitializeSerialConsole()” do? In said function, what is “cbufRx” and “cbufTx”? What type of data structure is it? </i></b>
 
-* The function InitializeSerialConsole() initializes the UART for serial communication by setting up circular buffers for receiving (cbufRx) and transmitting (cbufTx) data, configuring the USART module and its callbacks, setting interrupt priority, and initiating a read operation to enable continuous data reception. The circular buffers are created using circular_buf_init(), which allocates memory for storing serial data before it is processed.
+* The function `InitializeSerialConsole()` initializes the UART for serial communication by setting up circular buffers for receiving (`cbufRx`) and transmitting (`cbufTx`) data, configuring the USART module and its callbacks, setting interrupt priority, and initiating a read operation to enable continuous data reception. The circular buffers are created using `circular_buf_init()`, which allocates memory for storing serial data before it is processed.
 
-* cbufRx and cbufTx are circular buffers, a type of FIFO (First-In, First-Out) data structure that allows efficient handling of continuous data streams. This structure enables smooth serial communication by storing incoming and outgoing data in a fixed-size buffer where the read and write pointers wrap around when they reach the buffer’s end. Circular buffers help prevent data loss, making them ideal for asynchronous serial data handling in embedded systems.
+* `cbufRx` and `cbufTx` are in <u>circular buffer data structure</u>, <u>handle data type</u>, a type of FIFO (First-In, First-Out) data structure that allows efficient handling of continuous data streams. This structure enables smooth serial communication by storing incoming and outgoing data in a fixed-size buffer where the read and write pointers wrap around when they reach the buffer’s end. Circular buffers help prevent data loss, making them ideal for asynchronous serial data handling in embedded systems.
+
+<br>
 
 <b><i> 2. How are “cbufRx” and “cbufTx” initialized? Where is the library that defines them (please list the *C file they come from). </i></b>
 
-* The variables cbufRx and cbufTx are initialized in the function InitializeSerialConsole() using the function circular_buf_init(). This function is called with two parameters: a pointer to a character buffer (rxCharacterBuffer for cbufRx and txCharacterBuffer for cbufTx) and the respective buffer sizes (RX_BUFFER_SIZE and TX_BUFFER_SIZE). This setup effectively creates circular buffers for handling received and transmitted data in the serial communication process.
+* The variables `cbufRx` and `cbufTx` are initialized in the function `InitializeSerialConsole()` using the function `circular_buf_init()`. This function is called with two parameters: a pointer to a character buffer(`rxCharacterBuffer` for `cbufRx` and `txCharacterBuffer` for `cbufTx`) and the respective buffer sizes(`RX_BUFFER_SIZE` and `TX_BUFFER_SIZE`). This setup effectively creates circular buffers for handling received and transmitted data in the serial communication process.
 
-* The circular_buf_init() function is defined in circular_buffer.c, with its corresponding declarations in circular_buffer.h. This library implements a circular buffer (ring buffer) structure, enabling efficient handling of serial data by maintaining a FIFO (First-In, First-Out) queue. The SerialConsole.c file, which contains the InitializeSerialConsole() function, utilizes this library to initialize and manage the serial console’s buffers.
+* The `circular_buf_init()` function is defined in `circular_buffer.c` implementation file, with its corresponding declarations in `circular_buffer.h` header file. This library implements a circular buffer(ring buffer) structure, enabling efficient handling of serial data by maintaining a FIFO (First-In, First-Out) queue. <br>
+The `SerialConsole.c` implementation file, which includes the `InitializeSerialConsole()` function, utilizing this library to initialize and manage the serial console’s buffers.
+
+<br>
 
 <b><i> 3. Where are the character arrays where the RX and TX characters are being stored at the end? Please mention their name and size.
 Tip: Please note cBufRx and cBufTx are structures. </i></b>
 
-* rxCharacterBuffer – This array stores the received characters (RX).<br>
-Size: RX_BUFFER_SIZE (512 bytes).<br>
-Defined in: SerialConsole.c.
+* `rxCharacterBuffer` – This array stores the received characters (RX).<br>
+    * Size: `RX_BUFFER_SIZE`(512 bytes).<br>
+    * Defined in: `SerialConsole.c` implementation file.
 
-* txCharacterBuffer – This array stores the transmitted characters (TX).<br>
-Size: TX_BUFFER_SIZE (512 bytes).<br>
-Defined in: SerialConsole.c.
+* `txCharacterBuffer` – This array stores the transmitted characters (TX).<br>
+    * Size: `TX_BUFFER_SIZE`(512 bytes).<br>
+    * Defined in: `SerialConsole.c` implementation file.
+
+<br>
 
 <b><i> 4. Where are the interrupts for UART character received and UART character sent defined?</i></b> 
 
-<b><i> 5. What are the callback functions that are called when: <br>
-a. A character is received? (RX) 
-b. A character has been sent? (TX) </i></b>
+* These two interrupts are defined within the `configure_usart_callbacks()` function in `SerialConsole.c` implementation file, which declares and enables the interrupt service routine(ISR) - callback functions of these two operations within the USART module.
+
+<br>
+
+<b><i> 5. What are the callback functions that are called when:</i></b>
+
+* <b><i>a. A character is received? (RX)</i></b>
+    * `usart_read_callback()`.
+
+* <b><i>b. A character has been sent? (TX) </i></b>
+    * `usart_write_callback()`.
+
+<br>
 
 <b><i> 6. Explain what is being done on each of these two callbacks and how they relate to the cbufRx and cbufTx buffers.</i></b> 
+
+* `usart_read_callback()`:
+    * Stores the received character(from `latestRx`) into the circular receive buffer `cbufRx` if `cbufRx` is not full;
+    * Sends the character to the CLI queue to notify the CLI thread about the new input;
+    * Starts a new asynchronous read operation to receive the next character;
+    * Yields to a higher priority task if one was woken by the queue operation.
+
+* `usart_write_callback()`:
+    * Attempts to get the next character to transmit from the circular transmit buffer `cbufTx`;
+    * If a character is available(`cbufTx` is not empty), it starts a new asynchronous write operation to send that character;
+    * If no character is available(`cbufTx` is empty), it simply returns, ending the transmission chain until new data is added to the buffer `cbufTx`.
+
+<br>
 
 <b><i> 7. Draw a diagram that explains the program flow for UART receive – starting with the user typing a character and ending with how that characters ends up in the circular buffer “cbufRx”. Please make reference to specific functions in the starter code. </i></b>
 
